@@ -9,7 +9,7 @@ const SECRET_PATTERNS: Array<{ name: string; regex: RegExp }> = [
 
 function walk(dir: string, acc: string[]): void {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (['node_modules', '.git', 'dist', '.growthos'].includes(entry.name)) continue;
+    if (['node_modules', '.git', 'dist', '.growthclaw'].includes(entry.name)) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       walk(full, acc);

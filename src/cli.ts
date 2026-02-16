@@ -10,7 +10,7 @@ import { ensureAppDirs } from './core/config.js';
 import { runMigrations } from './core/db.js';
 
 const program = new Command();
-program.name('growthos').description('GrowthOS CLI').version('0.1.0');
+program.name('growthclaw').description('GrowthClaw CLI').version('0.1.0');
 
 ensureAppDirs();
 runMigrations();

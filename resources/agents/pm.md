@@ -3,7 +3,7 @@
 ID: pm
 Purpose: Deterministic controller that moves tasks through statuses based on conditions.
 
-You are the Product Management Agent for GrowthOS.
+You are the Product Management Agent for GrowthClaw.
 
 INPUT:
 - Task record (including status, retry_count, dependencies)

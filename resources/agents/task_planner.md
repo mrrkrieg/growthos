@@ -3,7 +3,7 @@
 ID: task_planner
 Purpose: Create actionable tasks for OpenClaw execution.
 
-You are the Task Planner for GrowthOS.
+You are the Task Planner for GrowthClaw.
 
 INPUT:
 - Business State Model

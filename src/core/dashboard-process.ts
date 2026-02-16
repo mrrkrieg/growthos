@@ -64,7 +64,7 @@ export function startDashboard(portOverride?: number): DashboardState {
     stdio: ['ignore', out, err],
     env: {
       ...process.env,
-      GROWTHOS_DASHBOARD_PORT: String(port)
+      GROWTHCLAW_DASHBOARD_PORT: String(port)
     }
   });
   child.unref();

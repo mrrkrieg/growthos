@@ -15,11 +15,11 @@ Do not disclose secrets in issues or pull requests.
 
 ## Security Defaults
 
-- GrowthOS uses draft-first execution by default.
+- GrowthClaw uses draft-first execution by default.
 - No secrets are stored in repository files.
 - Paid API write actions are disabled unless explicitly configured.
 - Cron and workflow installers avoid embedding credentials.
 - Dashboard binds to `127.0.0.1` by default; optional basic auth can be enabled with:
-  - `GROWTHOS_DASHBOARD_BASIC_AUTH=1`
-  - `GROWTHOS_DASHBOARD_USER=<user>`
-  - `GROWTHOS_DASHBOARD_PASS=<pass>`
+  - `GROWTHCLAW_DASHBOARD_BASIC_AUTH=1`
+  - `GROWTHCLAW_DASHBOARD_USER=<user>`
+  - `GROWTHCLAW_DASHBOARD_PASS=<pass>`

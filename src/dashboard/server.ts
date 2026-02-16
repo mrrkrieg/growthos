@@ -94,17 +94,17 @@ function readArtifactPreview(filepath: string): string {
 }
 
 function requireBasicAuthIfEnabled(req: express.Request, res: express.Response, next: express.NextFunction): void {
-  const enabled = process.env.GROWTHOS_DASHBOARD_BASIC_AUTH === '1';
+  const enabled = process.env.GROWTHCLAW_DASHBOARD_BASIC_AUTH === '1';
   if (!enabled) {
     next();
     return;
   }
 
-  const expectedUser = process.env.GROWTHOS_DASHBOARD_USER || 'admin';
-  const expectedPass = process.env.GROWTHOS_DASHBOARD_PASS || 'change-me';
+  const expectedUser = process.env.GROWTHCLAW_DASHBOARD_USER || 'admin';
+  const expectedPass = process.env.GROWTHCLAW_DASHBOARD_PASS || 'change-me';
   const auth = req.headers.authorization;
   if (!auth?.startsWith('Basic ')) {
-    res.setHeader('WWW-Authenticate', 'Basic realm="GrowthOS Dashboard"');
+    res.setHeader('WWW-Authenticate', 'Basic realm="GrowthClaw Dashboard"');
     res.status(401).json({ error: 'Authentication required' });
     return;
   }
@@ -654,12 +654,12 @@ function startServer(): void {
   } else {
     app.get('/', (_req, res) => {
       res.type('text/plain').send(
-        'GrowthOS dashboard UI is not built. Run: npm run build:web and restart dashboard. API is available under /api.'
+        'GrowthClaw dashboard UI is not built. Run: npm run build:web and restart dashboard. API is available under /api.'
       );
     });
   }
 
-  const port = Number(process.env.GROWTHOS_DASHBOARD_PORT || getConfig().dashboard.port || 3333);
+  const port = Number(process.env.GROWTHCLAW_DASHBOARD_PORT || getConfig().dashboard.port || 3333);
   app.listen(port, '127.0.0.1', () => {
     fs.appendFileSync(LOG_FILE, `[${new Date().toISOString()}] dashboard_server listening port=${port}\n`, 'utf8');
   });

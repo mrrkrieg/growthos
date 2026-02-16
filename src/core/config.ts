@@ -2,11 +2,11 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-export const APP_DIR = process.env.GROWTHOS_HOME || path.join(os.homedir(), '.growthos');
-export const DB_PATH = path.join(APP_DIR, 'growthos.db');
+export const APP_DIR = process.env.GROWTHCLAW_HOME || path.join(os.homedir(), '.growthclaw');
+export const DB_PATH = path.join(APP_DIR, 'growthclaw.db');
 export const CONFIG_PATH = path.join(APP_DIR, 'config.json');
 export const LOG_DIR = path.join(APP_DIR, 'logs');
-export const LOG_FILE = path.join(LOG_DIR, 'growthos.log');
+export const LOG_FILE = path.join(LOG_DIR, 'growthclaw.log');
 export const WORKFLOWS_DIR = path.join(APP_DIR, 'workflows');
 export const AGENTS_DIR = path.join(APP_DIR, 'agents');
 export const TASKS_DIR = path.join(APP_DIR, 'tasks');

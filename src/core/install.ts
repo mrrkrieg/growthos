@@ -30,9 +30,9 @@ export function reinstallCronJobs(withDispatcherCron: boolean): { installed: boo
     return { installed: false, details: 'crontab command not available; skipped cron setup.' };
   }
 
-  const growthosPath = commandExists('growthos') ? 'growthos' : `node ${path.resolve(process.cwd(), 'dist/cli.js')}`;
-  const managedStart = '# BEGIN GROWTHOS';
-  const managedEnd = '# END GROWTHOS';
+  const growthclawPath = commandExists('growthclaw') ? 'growthclaw' : `node ${path.resolve(process.cwd(), 'dist/cli.js')}`;
+  const managedStart = '# BEGIN GROWTHCLAW';
+  const managedEnd = '# END GROWTHCLAW';
 
   let current = '';
   try {
@@ -43,16 +43,16 @@ export function reinstallCronJobs(withDispatcherCron: boolean): { installed: boo
 
   const cleaned = current
     .split('\n')
-    .filter((line) => !line.includes(managedStart) && !line.includes(managedEnd) && !line.includes('growthos workflow run strategy-evolution') && !line.includes('growthos workflow run dispatcher'))
+    .filter((line) => !line.includes(managedStart) && !line.includes(managedEnd) && !line.includes('growthclaw workflow run strategy-evolution') && !line.includes('growthclaw workflow run dispatcher'))
     .join('\n')
     .trim();
 
   const lines = [
     managedStart,
-    `0 9,13,17 * * * cd ${process.cwd()} && ${growthosPath} workflow run strategy-evolution >> ~/.growthos/logs/cron.log 2>&1`
+    `0 9,13,17 * * * cd ${process.cwd()} && ${growthclawPath} workflow run strategy-evolution >> ~/.growthclaw/logs/cron.log 2>&1`
   ];
   if (withDispatcherCron) {
-    lines.push(`*/10 * * * * cd ${process.cwd()} && ${growthosPath} workflow run dispatcher >> ~/.growthos/logs/cron.log 2>&1`);
+    lines.push(`*/10 * * * * cd ${process.cwd()} && ${growthclawPath} workflow run dispatcher >> ~/.growthclaw/logs/cron.log 2>&1`);
   }
   lines.push(managedEnd);
 

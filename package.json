@@ -1,11 +1,11 @@
 {
-  "name": "growthos",
+  "name": "growthclaw",
   "version": "0.1.0",
-  "description": "GrowthOS - open-source marketing operating system for OpenClaw",
+  "description": "GrowthClaw - open-source marketing operating system for OpenClaw",
   "license": "MIT",
   "type": "module",
   "bin": {
-    "growthos": "dist/cli.js"
+    "growthclaw": "dist/cli.js"
   },
   "scripts": {
     "build": "npm run build:server && npm run build:web",

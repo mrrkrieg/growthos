@@ -18,7 +18,7 @@ export function App() {
   return (
     <div className="layout">
       <aside className="nav">
-        <h1><Link to="/">GrowthOS</Link></h1>
+        <h1><Link to="/">GrowthClaw</Link></h1>
         <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>Overview</NavLink>
         <NavLink to="/tasks" className={({ isActive }) => (isActive ? 'active' : '')}>Tasks</NavLink>
         <NavLink to="/approvals" className={({ isActive }) => (isActive ? 'active' : '')}>Approvals</NavLink>

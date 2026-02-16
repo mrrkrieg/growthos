@@ -1,7 +1,7 @@
 node_modules/
 dist/
 dashboard/dist/
-.growthos/
+.growthclaw/
 .DS_Store
 *.log
 APPROVAL_REQUEST.md

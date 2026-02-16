@@ -5,7 +5,7 @@ export function registerLogsCommand(program: Command): void {
   program
     .command('logs')
     .argument('[lines]', 'Number of lines', '100')
-    .description('Show recent GrowthOS logs')
+    .description('Show recent GrowthClaw logs')
     .action((linesRaw: string) => {
       const lines = Number(linesRaw);
       if (Number.isNaN(lines) || lines <= 0) {

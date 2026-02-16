@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { CONFIG_PATH, ensureAppDirs } from './config.js';
 
-export interface GrowthOSConfig {
+export interface GrowthClawConfig {
   dashboard: {
     port: number;
   };
@@ -22,7 +22,7 @@ export interface GrowthOSConfig {
   };
 }
 
-const DEFAULT_CONFIG: GrowthOSConfig = {
+const DEFAULT_CONFIG: GrowthClawConfig = {
   dashboard: {
     port: 3333
   },
@@ -65,7 +65,7 @@ function deepMergeObjects(base: Record<string, unknown>, patch: Record<string, u
   return out;
 }
 
-export function getConfig(): GrowthOSConfig {
+export function getConfig(): GrowthClawConfig {
   ensureAppDirs();
   if (!fs.existsSync(CONFIG_PATH)) {
     fs.writeFileSync(CONFIG_PATH, JSON.stringify(DEFAULT_CONFIG, null, 2), 'utf8');
@@ -73,21 +73,21 @@ export function getConfig(): GrowthOSConfig {
   }
   try {
     const raw = fs.readFileSync(CONFIG_PATH, 'utf8');
-    const parsed = JSON.parse(raw) as Partial<GrowthOSConfig>;
+    const parsed = JSON.parse(raw) as Partial<GrowthClawConfig>;
     return deepMergeObjects(
       DEFAULT_CONFIG as unknown as Record<string, unknown>,
       parsed as Record<string, unknown>
-    ) as unknown as GrowthOSConfig;
+    ) as unknown as GrowthClawConfig;
   } catch {
     return DEFAULT_CONFIG;
   }
 }
 
-export function updateConfig(patch: Partial<GrowthOSConfig>): GrowthOSConfig {
+export function updateConfig(patch: Partial<GrowthClawConfig>): GrowthClawConfig {
   const merged = deepMergeObjects(
     getConfig() as unknown as Record<string, unknown>,
     patch as Record<string, unknown>
-  ) as unknown as GrowthOSConfig;
+  ) as unknown as GrowthClawConfig;
   fs.writeFileSync(CONFIG_PATH, JSON.stringify(merged, null, 2), 'utf8');
   return merged;
 }

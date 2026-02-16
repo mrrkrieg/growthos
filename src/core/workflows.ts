@@ -92,8 +92,8 @@ function writeApprovalRequest(): string {
   lines.push('');
   lines.push('## Approve Tasks');
   lines.push('');
-  lines.push('- Approve all: `growthos tasks approve --all`');
-  lines.push('- Approve one: `growthos tasks approve <task-id>`');
+  lines.push('- Approve all: `growthclaw tasks approve --all`');
+  lines.push('- Approve one: `growthclaw tasks approve <task-id>`');
 
   const outputPath = path.resolve(process.cwd(), 'APPROVAL_REQUEST.md');
   fs.writeFileSync(outputPath, lines.join('\n'), 'utf8');
@@ -277,7 +277,7 @@ function runExecuteTask(taskArg?: string): Record<string, unknown> {
   const artifactPath = path.join(taskDir, 'OUTPUT.md');
   fs.writeFileSync(
     artifactPath,
-    `# ${task.title}\n\n## Task Description\n${task.description}\n\n## Deliverable (Draft)\nThis draft artifact was produced by the executor workflow in GrowthOS v0.1.\n\n## Acceptance Criteria\n${task.acceptance_criteria_md}\n`,
+    `# ${task.title}\n\n## Task Description\n${task.description}\n\n## Deliverable (Draft)\nThis draft artifact was produced by the executor workflow in GrowthClaw v0.1.\n\n## Acceptance Criteria\n${task.acceptance_criteria_md}\n`,
     'utf8'
   );
 

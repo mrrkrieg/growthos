@@ -1,4 +1,4 @@
-# GrowthOS
+# GrowthClaw
 
 Marketing execution workflows for OpenClaw, with eval gates and a task pipeline.
 
@@ -16,20 +16,20 @@ Marketing execution workflows for OpenClaw, with eval gates and a task pipeline.
 - OpenClaw installed/running for full agent runtime integration
 - Local shell with `crontab` available (for system cron fallback)
 
-GrowthOS uses OpenClaw cron integration when available; otherwise it installs system cron jobs with schedule + payload bindings that call GrowthOS workflows.
+GrowthClaw uses OpenClaw cron integration when available; otherwise it installs system cron jobs with schedule + payload bindings that call GrowthClaw workflows.
 
 ## Install
 
 Installer script (after hosting this repo):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<org>/growthos/main/scripts/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/<org>/growthclaw/main/scripts/install.sh | bash
 ```
 
 Alternative from OpenClaw prompt:
 
 ```text
-tell OpenClaw agent: install github.com/<org>/growthos
+tell OpenClaw agent: install github.com/<org>/growthclaw
 ```
 
 Local clone install:
@@ -38,17 +38,17 @@ Local clone install:
 npm install
 npm run build
 npm link
-growthos install --with-dispatcher-cron
+growthclaw install --with-dispatcher-cron
 ```
 
 ## Quickstart
 
 ```bash
-growthos install
-growthos workflow run intake-and-plan "Set up GrowthOS for <company>"
-growthos tasks list --status needs-approval
-growthos tasks approve --all
-growthos dashboard
+growthclaw install
+growthclaw workflow run intake-and-plan "Set up GrowthClaw for <company>"
+growthclaw tasks list --status needs-approval
+growthclaw tasks approve --all
+growthclaw dashboard
 ```
 
 Then open `http://127.0.0.1:3333`.
@@ -90,7 +90,7 @@ Loop:
 ### `execute-task`
 
 - Inputs: approved task id
-- Writes: task artifacts in `~/.growthos/tasks/<task-id>/`, task status transitions, eval fields, task events
+- Writes: task artifacts in `~/.growthclaw/tasks/<task-id>/`, task status transitions, eval fields, task events
 - Outputs: evaluator verdict and transition to `done` / `revise` / `blocked`
 
 ### `strategy-evolution`
@@ -104,9 +104,9 @@ Loop:
 Start/stop/status commands:
 
 ```bash
-growthos dashboard
-growthos dashboard stop
-growthos dashboard status
+growthclaw dashboard
+growthclaw dashboard stop
+growthclaw dashboard status
 ```
 
 Key screens:
@@ -120,7 +120,7 @@ Key screens:
 - Logs
 - Settings
 
-All UI actions call guarded GrowthOS backend endpoints using the same PM transition rules as CLI.
+All UI actions call guarded GrowthClaw backend endpoints using the same PM transition rules as CLI.
 
 ## Cron Schedule
 
@@ -133,7 +133,7 @@ Default strategy evolution schedule (local time):
 Manual trigger:
 
 ```bash
-growthos workflow run strategy-evolution
+growthclaw workflow run strategy-evolution
 ```
 
 Reinstall cron from dashboard or CLI install command.
@@ -142,7 +142,7 @@ Reinstall cron from dashboard or CLI install command.
 
 Config file:
 
-- `~/.growthos/config.json`
+- `~/.growthclaw/config.json`
 
 Supported keys:
 
@@ -153,7 +153,7 @@ Supported keys:
 - `cron.strategyEvolution.times`
 - `integrations.*` placeholders
 
-You can also relocate runtime root with `GROWTHOS_HOME` in future versions (planned).
+You can also relocate runtime root with `GROWTHCLAW_HOME` in future versions (planned).
 
 ## Security Model
 
@@ -163,7 +163,7 @@ You can also relocate runtime root with `GROWTHOS_HOME` in future versions (plan
 - PM guarded transitions (no bypass unless force is explicitly allowed)
 - Secrets are never committed to repo; use environment variables
 - Dashboard sanitizes logs/artifacts to avoid secret leakage
-- Optional dashboard basic auth via `GROWTHOS_DASHBOARD_BASIC_AUTH=1`
+- Optional dashboard basic auth via `GROWTHCLAW_DASHBOARD_BASIC_AUTH=1`
 
 ## Build Your Own Workflows
 
@@ -191,23 +191,23 @@ Keep eval/verdict gates explicit and route transitions through PM rules.
 ## Commands
 
 ```bash
-growthos install
-growthos workflow list
-growthos workflow install <id>
-growthos workflow run <id> "<task>"
-growthos tasks list [--status ...]
-growthos tasks view <task-id>
-growthos tasks approve <task-id>
-growthos tasks approve --all
-growthos tasks edit <task-id> [--patch '{"priority":"P0"}']
-growthos tasks move <task-id> <status> [--force]
-growthos tasks comment <task-id> "<text>"
-growthos strategy current
-growthos strategy history
-growthos logs [<lines>]
-growthos dashboard
-growthos dashboard stop
-growthos dashboard status
+growthclaw install
+growthclaw workflow list
+growthclaw workflow install <id>
+growthclaw workflow run <id> "<task>"
+growthclaw tasks list [--status ...]
+growthclaw tasks view <task-id>
+growthclaw tasks approve <task-id>
+growthclaw tasks approve --all
+growthclaw tasks edit <task-id> [--patch '{"priority":"P0"}']
+growthclaw tasks move <task-id> <status> [--force]
+growthclaw tasks comment <task-id> "<text>"
+growthclaw strategy current
+growthclaw strategy history
+growthclaw logs [<lines>]
+growthclaw dashboard
+growthclaw dashboard stop
+growthclaw dashboard status
 ```
 
 ## Contributing

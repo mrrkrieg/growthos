@@ -11,7 +11,7 @@ export function registerWorkflowCommands(program: Command): void {
     .action(() => {
       const rows = listInstalledWorkflows();
       if (!rows.length) {
-        console.log('No workflows installed. Run: growthos install');
+        console.log('No workflows installed. Run: growthclaw install');
         return;
       }
       for (const row of rows) {

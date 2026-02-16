@@ -47,7 +47,7 @@ function printTask(task: Task): void {
 }
 
 function openEditorWithJson(initial: unknown): Record<string, unknown> {
-  const tmp = path.join(os.tmpdir(), `growthos-task-edit-${Date.now()}.json`);
+  const tmp = path.join(os.tmpdir(), `growthclaw-task-edit-${Date.now()}.json`);
   fs.writeFileSync(tmp, JSON.stringify(initial, null, 2), 'utf8');
   const editor = process.env.EDITOR || 'vi';
   const res = spawnSync(editor, [tmp], { stdio: 'inherit' });

@@ -13,6 +13,6 @@ npm install
 npm run build
 npm link
 
-growthos install --with-dispatcher-cron
+growthclaw install --with-dispatcher-cron
 
-echo "GrowthOS installed. Run: growthos dashboard"
+echo "GrowthClaw installed. Run: growthclaw dashboard"
