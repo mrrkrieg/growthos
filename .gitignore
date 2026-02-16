@@ -1,0 +1,7 @@
+node_modules/
+dist/
+dashboard/dist/
+.growthos/
+.DS_Store
+*.log
+APPROVAL_REQUEST.md

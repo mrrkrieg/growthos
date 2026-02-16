@@ -1,0 +1,23 @@
+id: execute-task
+name: Execute Task
+trigger: queued
+runtime: openclaw
+safe_defaults:
+  publish_mode: draft_only
+steps:
+  - id: executor_produce_artifacts
+    agent: executor
+    tools: [files, web, git, api]
+  - id: editor_refine
+    optional: true
+    agent: executor
+    tools: [files]
+  - id: handoff_completion
+    agent: pm
+    tools: [files]
+  - id: task_eval
+    agent: task_eval
+    tools: [files]
+  - id: pm_transition
+    agent: pm
+    tools: [files]

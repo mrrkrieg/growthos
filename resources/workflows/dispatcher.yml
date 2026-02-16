@@ -1,0 +1,13 @@
+id: dispatcher
+name: PM Dispatcher
+trigger: cron
+schedule:
+  interval_minutes: 10
+runtime: openclaw
+steps:
+  - id: select_approved_task
+    agent: pm
+    tools: [files]
+  - id: enqueue_execute_task
+    agent: pm
+    tools: [files]

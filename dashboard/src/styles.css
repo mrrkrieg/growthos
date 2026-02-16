@@ -1,0 +1,42 @@
+:root {
+  --bg: #f5f7f4;
+  --surface: #ffffff;
+  --text: #132219;
+  --muted: #526355;
+  --accent: #0f7a49;
+  --danger: #9b2a2a;
+  --line: #dbe2d9;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "IBM Plex Sans", "Segoe UI", sans-serif; background: radial-gradient(circle at top right, #e5f3ea 0%, var(--bg) 40%); color: var(--text); }
+a { color: inherit; text-decoration: none; }
+
+.layout { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+.nav { border-right: 1px solid var(--line); padding: 18px; background: #f0f5ef; }
+.nav h1 { font-size: 16px; margin: 0 0 14px; }
+.nav a { display: block; padding: 8px 10px; border-radius: 8px; margin-bottom: 6px; color: var(--muted); }
+.nav a.active { background: #d8ebdd; color: #0b552f; font-weight: 600; }
+
+.main { padding: 18px; }
+.topbar { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+.topbar input { width: 300px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 8px; }
+button { border: 1px solid #bcd3c1; background: #ebf8ef; color: #0b5a33; border-radius: 8px; padding: 8px 11px; cursor: pointer; }
+button.danger { background: #f9e9e9; border-color: #e2c6c6; color: var(--danger); }
+button:disabled { opacity: 0.6; cursor: default; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.kv { color: var(--muted); font-size: 13px; }
+
+.kanban { display: grid; grid-template-columns: repeat(8, minmax(220px, 1fr)); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+.col { background: #edf2ec; border: 1px solid var(--line); border-radius: 10px; padding: 8px; min-height: 200px; }
+.col h3 { margin: 0 0 8px; font-size: 13px; text-transform: capitalize; }
+.task-card { background: white; border: 1px solid #d9e2d8; border-radius: 8px; padding: 8px; margin-bottom: 8px; cursor: grab; }
+.badge { display: inline-block; font-size: 11px; padding: 2px 6px; border-radius: 999px; background: #eef2ef; margin-right: 5px; }
+
+.tabs { display: flex; gap: 8px; margin-bottom: 10px; }
+.tabs button.active { background: #cfe7d6; border-color: #9ec7aa; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border-bottom: 1px solid var(--line); text-align: left; padding: 8px; font-size: 13px; }
+pre { white-space: pre-wrap; word-break: break-word; background: #f7faf7; border: 1px solid var(--line); border-radius: 8px; padding: 10px; }

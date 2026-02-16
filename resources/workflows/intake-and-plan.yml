@@ -1,0 +1,27 @@
+id: intake-and-plan
+name: Intake And Plan
+trigger: manual
+runtime: openclaw
+safe_defaults:
+  publish_mode: draft_only
+steps:
+  - id: context_scrape
+    agent: context
+    tools: [web, files]
+  - id: intake_questions
+    agent: context
+    tools: [files]
+  - id: state_model
+    agent: context
+    tools: [files]
+  - id: initial_strategy
+    agent: strategy_planner
+    tools: [files]
+  - id: task_backlog_generation
+    agent: task_planner
+    tools: [files]
+  - id: human_approval_request
+    agent: pm
+    tools: [files]
+outputs:
+  - APPROVAL_REQUEST.md

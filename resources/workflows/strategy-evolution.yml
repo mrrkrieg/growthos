@@ -1,0 +1,26 @@
+id: strategy-evolution
+name: Strategy Evolution
+trigger: cron
+schedule:
+  local_times: ["09:00", "13:00", "17:00"]
+runtime: openclaw
+safe_defaults:
+  publish_mode: draft_only
+steps:
+  - id: load_context_and_current_strategy
+    agent: strategy_eval
+    tools: [files]
+  - id: load_all_tasks_and_recent_outcomes
+    agent: strategy_eval
+    tools: [files]
+  - id: strategy_eval_add_tasks
+    agent: strategy_eval
+    tools: [files]
+  - id: pm_create_tasks
+    agent: pm
+    tools: [files]
+  - id: human_approval_request
+    agent: pm
+    tools: [files]
+outputs:
+  - APPROVAL_REQUEST.md
