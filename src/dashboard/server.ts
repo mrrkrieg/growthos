@@ -570,6 +570,27 @@ function startServer(): void {
     res.json({ workflows: listInstalledWorkflows() });
   });
 
+  const ALLOWED_WORKFLOW_IDS = ['intake-and-plan', 'execute-task', 'strategy-evolution', 'dispatcher'];
+  app.post('/api/workflows/run', (req, res) => {
+    const workflowId = req.body?.workflowId;
+    const taskArg = req.body?.taskArg;
+    if (!workflowId || typeof workflowId !== 'string') {
+      res.status(400).json({ error: 'workflowId is required (string)' });
+      return;
+    }
+    if (!ALLOWED_WORKFLOW_IDS.includes(workflowId)) {
+      res.status(400).json({ error: `Unknown workflow id: ${workflowId}. Allowed: ${ALLOWED_WORKFLOW_IDS.join(', ')}` });
+      return;
+    }
+    try {
+      const result = runWorkflow(workflowId, typeof taskArg === 'string' ? taskArg : undefined);
+      res.json(result);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      res.status(500).json({ error: message });
+    }
+  });
+
   app.get('/api/runs', (_req, res) => {
     const rows = db().prepare('SELECT * FROM runs ORDER BY id DESC LIMIT 200').all();
     res.json({ runs: rows });

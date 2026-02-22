@@ -1,0 +1,69 @@
+{
+  "growthclaw_list_tasks": {
+    "description": "List tasks with optional status filter (e.g. needs-approval, approved, done)",
+    "method": "GET",
+    "path": "/api/tasks",
+    "parameters": {
+      "status": { "type": "string", "optional": true, "description": "Filter by status" }
+    }
+  },
+  "growthclaw_get_task": {
+    "description": "Get one task by id",
+    "method": "GET",
+    "path": "/api/tasks/:taskId",
+    "parameters": {
+      "taskId": { "type": "string", "required": true, "description": "Task id" }
+    }
+  },
+  "growthclaw_approve_tasks": {
+    "description": "Approve one task by id, or all eligible tasks when taskId is omitted (POST to approve-bulk)",
+    "method": "POST",
+    "path_bulk": "/api/tasks/approve-bulk",
+    "path_one": "/api/tasks/:taskId/approve",
+    "parameters": {
+      "taskId": { "type": "string", "optional": true, "description": "Task id; omit to approve all" }
+    }
+  },
+  "growthclaw_run_workflow": {
+    "description": "Run a workflow. workflowId: intake-and-plan, execute-task, strategy-evolution, or dispatcher. taskArg required for execute-task (task id), optional for intake-and-plan (e.g. website URL)",
+    "method": "POST",
+    "path": "/api/workflows/run",
+    "body": { "workflowId": "string", "taskArg": "string (optional)" },
+    "parameters": {
+      "workflowId": { "type": "string", "required": true },
+      "taskArg": { "type": "string", "optional": true }
+    }
+  },
+  "growthclaw_get_approvals": {
+    "description": "List pending approvals (strategy/task batches)",
+    "method": "GET",
+    "path": "/api/approvals",
+    "parameters": {}
+  },
+  "growthclaw_approve_strategy": {
+    "description": "Approve a strategy approval batch by strategyVersionId",
+    "method": "POST",
+    "path": "/api/approvals/:strategyVersionId/approve",
+    "parameters": {
+      "strategyVersionId": { "type": "string", "required": true }
+    }
+  },
+  "growthclaw_get_strategy": {
+    "description": "Get current strategy summary",
+    "method": "GET",
+    "path": "/api/strategy/current",
+    "parameters": {}
+  },
+  "growthclaw_dispatch_next": {
+    "description": "Run the dispatcher: pick the next eligible approved task and run execute-task for it",
+    "method": "POST",
+    "path": "/api/tasks/dispatch-next",
+    "parameters": {}
+  },
+  "growthclaw_get_workflows": {
+    "description": "List installed workflows",
+    "method": "GET",
+    "path": "/api/workflows",
+    "parameters": {}
+  }
+}

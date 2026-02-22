@@ -1,0 +1,16 @@
+{
+  "name": "growthclaw",
+  "description": "GrowthClaw marketing pipeline: tasks, approvals, workflows, strategy",
+  "version": "0.1.0",
+  "tools": [
+    "growthclaw_list_tasks",
+    "growthclaw_get_task",
+    "growthclaw_approve_tasks",
+    "growthclaw_run_workflow",
+    "growthclaw_get_approvals",
+    "growthclaw_approve_strategy",
+    "growthclaw_get_strategy",
+    "growthclaw_dispatch_next",
+    "growthclaw_get_workflows"
+  ]
+}

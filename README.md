@@ -208,6 +208,16 @@ All actions go through the same backend and PM rules as the CLI.
 
 ---
 
+## OpenClaw skill
+
+GrowthClaw ships an **OpenClaw skill** in `openclaw-skill/`. It gives the OpenClaw agent tools to list and approve tasks, run workflows, view strategy and approvals, and trigger the dispatcher—all via the GrowthClaw dashboard API.
+
+**Install:** Copy the `openclaw-skill/` directory into OpenClaw’s skills directory, or point OpenClaw at this path (e.g. from a GrowthClaw repo clone). See [openclaw-skill/README.md](openclaw-skill/README.md) for details.
+
+**Prerequisite:** The GrowthClaw dashboard must be running so the API is available (default `http://127.0.0.1:3333`). If the dashboard runs elsewhere, set `GROWTHCLAW_API_URL` in the environment OpenClaw uses when invoking the skill.
+
+---
+
 ## Cron schedule
 
 By default, strategy evolution runs at **09:00**, **13:00**, and **17:00** (local time). The optional **dispatcher** cron runs every 10 minutes when installed with `--with-dispatcher-cron`.
